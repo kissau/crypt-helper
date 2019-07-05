@@ -6,13 +6,20 @@ import junit.framework.TestCase;
 
 public class AesCrypterTest extends TestCase{
 	
-	public void test() {
+	public void test01() {
 		AesCrypter aesCrypter = new AesCrypter();
-		String encrypt = aesCrypter.encrypt("你好时间段上课自行车想象中只需再初学者从自行车自行车在呈现出行政村", "ddd");
-		System.err.println(encrypt);
-		
-		String src = aesCrypter.decrypt(encrypt, "ddd");
-		System.err.println(src);
+		String src = "helloworld";
+		String encrypt = aesCrypter.encrypt(src, "key");
+		String decryptSrc = aesCrypter.decrypt(encrypt, "key");
+		assertEquals(src, decryptSrc);
+	}
+	
+	public void test02() {
+		AesCrypter aesCrypter = new AesCrypter();
+		String src = "helloworld";
+		String encrypt = aesCrypter.encrypt(src, "key");
+		String decryptSrc = aesCrypter.decrypt(encrypt, "key2");
+		assertNotSame(src, decryptSrc);
 	}
 
 }
